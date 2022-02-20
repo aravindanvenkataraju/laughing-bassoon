@@ -29,6 +29,7 @@ func main() {
 	} else {
 		countLines(os.Stdin, counts)
 	}
+
 	for line, n := range counts {
 		if n > 1 {
 			fmt.Printf("%d\t%s\n", n, line)
@@ -41,6 +42,6 @@ func countLines(f *os.File, counts map[string]int) {
 		if input.Text() == "*" {
 			break
 		}
-		counts[input.Text()]++
+		counts[input.Text()+", found in file "+f.Name()]++
 	}
 }
